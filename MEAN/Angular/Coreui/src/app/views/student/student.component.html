@@ -1,0 +1,90 @@
+<p>customer-type works!</p>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <h4>Customer Types</h4>
+            </div>
+            <div class="col-auto">
+                <button type="button" (click)="openAdd()" class="btn btn-primary"><i class="fa fa-plus"></i> Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped bg-white">
+            <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Mssv</th>
+                    <th>Sdt</th>
+                    <th>Truong</th>
+
+
+                    <th style="width: 60px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of Students">
+
+                    <td>{{row.name}}</td>
+                    <td>{{row.mssv}}</td>
+                    <td>{{row.sdt}}</td>
+                    <td>{{row.truong}}</td>
+                    <td>
+                        <!-- <a href="['/customer-type', row.id]"><i class="fa fa-pencil-square-o"></i></a> -->
+                        <a href="#" (click)="openEdit($event, row._id)"><i class="fa fa-edit"></i></a>
+                        <a href="#" (click)="delete($event, row._id)"><i class="fa fa-trash text-danger"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title pull-left">Customer Type</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="txtName" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtName" name="name" [(ngModel)]="student.name" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtMssv" class="col-sm-2 col-form-label">Mssv</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtMssv" name="commission" [(ngModel)]="student.mssv" placeholder="Mssv">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtSdt" class="col-sm-2 col-form-label">Sdt</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtSdt" name="sdt" [(ngModel)]="student.sdt" placeholder="sdt">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtTruong" class="col-sm-2 col-form-label">Truong</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtTruong" name="Truong" [(ngModel)]="student.truong" placeholder="truong">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="save()" class="btn btn-primary">Save</button>
+                <button type="button" (click)="hideModal()" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
